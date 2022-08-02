@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace HM15_garage
 {
-
     public interface ITransport:IComparable<ITransport>
     {
         const int minSpeed = 0;     
@@ -15,7 +14,6 @@ namespace HM15_garage
         double fuelQuantity { get; set; }
         string brand { get; set; }
         void Move(); //двигаться
-
         void DoJob(); //выполнять работу
         void HelpHeadlights();
     }

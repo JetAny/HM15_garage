@@ -16,7 +16,6 @@ namespace HM15_garage
         {
             Console.WriteLine($"Трактор пашет поле");
         }
-
         public override void Move()
         {
             Console.WriteLine($"Трактор едет по проселочной  дороге");
