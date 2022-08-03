@@ -5,9 +5,7 @@
         private double _maxLoad;
         
         public int _totalLoad { get; set; }
-        //T ILoading<T>._totalLoad { get ; set ; }
-        //public T? _totalLoad { get;  set; }
-
+        
         public Truck(string fuelType, double fuelQuantity, string Name, int maxSpeed, double maxLoad) :
             base(fuelType, fuelQuantity, Name, maxSpeed)
         {

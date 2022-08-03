@@ -9,6 +9,7 @@
             transportOnGarage.Add(mechanicalMeans);
             transportOnGarage.Sort();
         }
+        
         public int GetIndex<T>(T myTransport)
         {
             if (myTransport == null)
