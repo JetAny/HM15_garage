@@ -10,18 +10,21 @@ namespace HM15_garage
     internal class Parts : IAddParts
     {
         private IParts? namePart;
-        
+        public event LogEvents? AddedLog;
         public void AddParts(IParts namePart,int index)
         {
-            this.namePart = namePart;
+            this.namePart = namePart;            
             namePart.GetParts( index);
+            if (AddedLog != null)
+                AddedLog($"На склад гаража добавленна запчасть: {namePart}");
         }
-        
-        //AddPartDelegate? _deleg;
-        //public void RegisterState(AddPartDelegate del)
-        //{
-        //    _deleg += del;
-        //}
+        public void RemoveParts(IParts namePart, int index)
+        {
+            this.namePart = namePart;
+            namePart.GetParts(index);
+            if (AddedLog != null)
+                AddedLog($"Со склада гаража выдана запчасть: {namePart}");
+        }
 
         public override string ToString()
         {

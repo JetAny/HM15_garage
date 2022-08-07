@@ -10,14 +10,13 @@ namespace HM15_garage
     {
         string? partName;
        public ElectricParts? namePart { get; set; }
-        public event LogEvents? AddedLog;
+       
         public string GetParts(int index)
         {
           
            EnumElectricParts namePart = (EnumElectricParts)index;
             partName= namePart.ToString();
-            if (AddedLog != null)
-                AddedLog($"На склад гаража добавленна электрическая запчасть{partName}");
+            
             return partName.ToString();
         }
         public override string ToString()

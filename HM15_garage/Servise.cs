@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace HM15_garage
 {
-    internal class Servis
+    internal class Servise
     {
-        static void Display()
+       public static void Display(string massage)
         {
-
+            Console.WriteLine(massage);
         }
+       
     }
 }

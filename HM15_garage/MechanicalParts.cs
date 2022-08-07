@@ -8,8 +8,8 @@ namespace HM15_garage
 {
     internal class MechanicalParts : IParts
     {
-        string partName;
-        public event LogEvents? AddedLog;
+        string? partName;
+        
         public string GetParts(int index)
         {
 

@@ -1,10 +1,9 @@
 ﻿
 using HM15_garage;
-using System;
 
-Garage garage1=new Garage();
+Garage garage1 = new Garage();
 ITransport car1 = new Car("Бензин", 55, "Шкода", 180, 4);
-ITransport car2 = new Car("Дизель",65,"БМВ",230,6);
+ITransport car2 = new Car("Дизель", 65, "БМВ", 230, 6);
 garage1.AddMechanicalMeans(car1);
 garage1.AddMechanicalMeans(car2);
 
@@ -35,24 +34,35 @@ garage1.ReturnFromFlight();
 garage1.ReturnFromFlight();
 garage1.ReturnFromFlight();
 
-garage1.AddPart(0,1);
-garage1.AddPart(1,2);
-garage1.AddPart(1,3);
-garage1.AddPart(1,4);
-garage1.AddPart(0,1);
-garage1. PrintGarageParts();
+garage1.AddPart(0, 1);
+garage1.AddPart(1, 2);
+garage1.AddPart(1, 3);
+garage1.AddPart(1, 4);
+garage1.AddPart(0, 1);
+garage1.PrintGarageParts();
+
+
+
+Console.WriteLine($"{new string('=', 50)}ДЗ 16{new string('=', 50)}");
+
 
 AddPartDelegate partsDelegate = garage1.AddPart;
 partsDelegate(0, 1);
-SendTransOnFlight SendTransDelegate= garage1.SendTransOnFlight;
+SendTransOnFlight SendTransDelegate = garage1.SendTransOnFlight;
 SendTransDelegate(32);
 RemovePartDelegate RemoveTransDelegate = garage1.ReturnFromFlight;
 RemoveTransDelegate();
 
-IParts addEvent = new Parts();
-addEvent.AddedLog+=Parts;
+var addEvent = new Parts();
+addEvent.AddedLog += Servise.Display;
+addEvent.AddParts(new ElectricParts(), 1);
+addEvent.AddParts(new ElectricParts(), 2);
+addEvent.AddParts(new ElectricParts(), 3);
+addEvent.AddParts(new MechanicalParts(), 1);
+addEvent.AddParts(new MechanicalParts(), 2);
 
-//void AddPart(int tape, int index)
-//{
-//    throw new NotImplementedException();
-//}
+addEvent.RemoveParts(new MechanicalParts(), 2);
+Console.WriteLine($"{new string('=', 50)}");
+
+//garage1.PrintGarageLog();
+
