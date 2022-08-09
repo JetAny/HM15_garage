@@ -12,12 +12,10 @@ namespace HM15_garage
             base(fuelType, fuelQuantity, Name, maxSpeed)
         {
         }
-
         public override void DoJob()
         {
             Console.WriteLine($"Комбаин косит пшеницу");
         }
-
         public override void Move()
         {
             Console.WriteLine($"Комбаин едет по полю");

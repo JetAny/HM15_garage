@@ -27,14 +27,10 @@ namespace HM15_garage
         {
             Console.WriteLine($"Поморгал фарами\n");
         }
-
-
         public object Clone()
         {
-            return MemberwiseClone();
-             
+            return MemberwiseClone();            
         }
-
         public int CompareTo(ITransport? other)
         {
             if (other == null)
@@ -43,7 +39,6 @@ namespace HM15_garage
             }
             int result = string.Compare(this.brand, other.brand);
             return result;
-
         }
         public static int namberRandom()
         {
@@ -57,8 +52,6 @@ namespace HM15_garage
                 $"Вид топлива: {fuelType}\n" +
                 $"Количество топлива в баке: {fuelQuantity}\t" +
                 $"Максимальная скорость передвижения: {maxSpeed}";
-        }
-
-        
+        }       
     }
 }

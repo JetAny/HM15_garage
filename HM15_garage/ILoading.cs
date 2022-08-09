@@ -8,7 +8,7 @@ namespace HM15_garage
 {
     public interface ILoading
     {
-        int totalLoad { get; set; }
+       int _totalLoad { get; set; }
         void Load(int totalLoad);
     }
 }

@@ -2,12 +2,12 @@
 {
     internal class Car : MechanicalMeans, ILoading
     {
-        private int _maxPassengers;
-        public int totalLoad { get; set; }
+        private int _maxPassengers;      
+        public int _totalLoad { get ; set ; }
         public Car(string fuelType, double fuelQuantity, string Name, int maxSpeed, int maxPassenger) :
             base(fuelType, fuelQuantity, Name, maxSpeed)
         {
-            _maxPassengers=maxPassenger;
+            _maxPassengers = maxPassenger;
         }
         public override void DoJob()
         {
@@ -21,12 +21,10 @@
         {
             Console.WriteLine($"Поморгала фарами\n");
         }
-
-        public void Load(int totalLoad)
+        void ILoading.Load(int totalLoad)
         {
             Console.WriteLine($"В машину загрузилось {_maxPassengers} пассажиров");
         }
-
         public override string ToString()
         {
             return $"{base.ToString()}\t" +
