@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HM15_garage
 {
-    public interface ITransport:IComparable<ITransport>
+    public interface ITransport:IComparable<ITransport>, ICloneable
     {
         const int minSpeed = 0;     
         static int maxSpeed { get; set; }
