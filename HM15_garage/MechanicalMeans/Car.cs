@@ -1,9 +1,13 @@
 ﻿namespace HM15_garage
 {
-    internal class Car : MechanicalMeans, ILoading
+    [Serializable]
+    public class Car : MechanicalMeans, ILoading
     {
-        private int _maxPassengers;      
+        public int _maxPassengers;      
         public int _totalLoad { get ; set ; }
+        
+        public Car() { }
+        
         public Car(string fuelType, double fuelQuantity, string Name, int maxSpeed, int maxPassenger) :
             base(fuelType, fuelQuantity, Name, maxSpeed)
         {
@@ -30,5 +34,7 @@
             return $"{base.ToString()}\t" +
                 $"Максимальное количество пассажиров: {_maxPassengers}\n";
         }
-    }
+
+        
+}
 }
