@@ -1,10 +1,13 @@
 ﻿namespace HM15_garage
 {
-    internal class Truck : MechanicalMeans, ILoading
+    [Serializable]
+    public class Truck : MechanicalMeans, ILoading
     {
-        private double _maxLoad;
+        public double _maxLoad;
         
         public int _totalLoad { get; set; }
+        public Truck() { }
+        
         
         public Truck(string fuelType, double fuelQuantity, string Name, int maxSpeed, double maxLoad) :
             base(fuelType, fuelQuantity, Name, maxSpeed)

@@ -1,5 +1,6 @@
 ﻿
 using HM15_garage;
+using System.Runtime.Serialization.Formatters.Binary;
 
 Garage garage1 = new Garage();
 ITransport car1 = new Car("Бензин", 55, "Шкода", 180, 4);
@@ -16,11 +17,11 @@ ITransport truck1 = new Truck("Дизель", 450, "Mersedes", 100, 25);
 ITransport truck2 = new Truck("Дизель", 450, "Man", 100, 25);
 garage1.AddMechanicalMeans(truck1);
 garage1.AddMechanicalMeans(truck2);
-
+Task task = garage1.TransportSerializJSON();
 var z = garage1.GetIndex(bus2);
 var bus3 = (ITransport)bus2.Clone();
 
-garage1.AddMechanicalMeans(bus3);
+//garage1.AddMechanicalMeans(bus3);
 garage1.PrintGarage();
 
 garage1.SendTransOnFlight(20);
@@ -64,5 +65,12 @@ addEvent.AddParts(new MechanicalParts(), 2);
 addEvent.RemoveParts(new MechanicalParts(), 2);
 Console.WriteLine($"{new string('=', 50)}");
 
-//garage1.PrintGarageLog();
+garage1.PrintGarageLog();
 
+Console.WriteLine($"{new string('=', 50)}");
+Console.WriteLine($"{new string('=', 50)}ДЗ 17{new string('=', 50)}");
+
+
+//garage1.TransportSerializBin();
+
+garage1.TransportSerializXML();

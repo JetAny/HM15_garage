@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HM15_garage
 {
-    
+    [Serializable]
     internal class Parts : IAddParts
     {
         private IParts? namePart;

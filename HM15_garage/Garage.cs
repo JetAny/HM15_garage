@@ -1,21 +1,95 @@
-﻿namespace HM15_garage
+﻿using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Xml.Serialization;
+
+namespace HM15_garage
 {
     delegate void AddPartDelegate(int tape, int index);
     delegate void SendTransOnFlight(int load);
     delegate void RemovePartDelegate();
+
+    [Serializable]
     internal class Garage
     {
-      
+
         public List<ITransport> transportOnGarage = new List<ITransport>();
         public List<ITransport> transOnFlight = new List<ITransport>();
         public List<IAddParts> _parts = new List<IAddParts>();
-        public List<String> garagesLog = new List<String>();
+        public List<string> garagesLog = new List<string>();
         public void AddMechanicalMeans(ITransport mechanicalMeans)
         {
             transportOnGarage.Add(mechanicalMeans);
             transportOnGarage.Sort();
         }
+        public void TransportSerializBin()
+        {
+            int i = 0;
+            ITransport[] garagesTransport = new ITransport[transportOnGarage.Count];
+            foreach (ITransport transport in transportOnGarage)
+            {
+                if (transport != null)
+                {
+                    garagesTransport[i] = transport;
+                    i++;
+                }
+            }
 
+            BinaryFormatter formBin = new BinaryFormatter();
+
+            using (FileStream fs = new FileStream("transportOnGarage.dat", FileMode.OpenOrCreate))
+            {
+                formBin.Serialize(fs, garagesTransport);
+            }
+        }
+        public async Task TransportSerializJSON()
+        {
+
+            using (FileStream fs = new FileStream("garagesTransport.json", FileMode.OpenOrCreate))
+            {
+                var options = new JsonSerializerOptions
+                {
+                    Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                    WriteIndented = true
+                };
+                int i = 0;
+                ITransport[] garagesTransport = new ITransport[transportOnGarage.Count];
+                foreach (ITransport transport in transportOnGarage)
+                {
+                    if (transport != null)
+                    {
+                        garagesTransport[i] = transport;
+
+                        i++;
+                    }
+                }
+
+                await JsonSerializer.SerializeAsync<ITransport[]>(fs, garagesTransport, options);
+            }
+        }
+        public void TransportSerializXML()
+        {
+            // объект для сериализации
+            int i = 0;
+            ITransport[] garagesTransport = new ITransport[transportOnGarage.Count];
+            foreach (ITransport transport in transportOnGarage)
+            {
+                if (transport != null)
+                {
+                    garagesTransport[i] = transport;
+                    i++;
+                }
+            }
+            // передаем в конструктор тип класса MechanicalMeans[]
+            //XmlSerializer formatter = new XmlSerializer(typeof(ITransport[]));
+            // получаем поток, куда будем записывать сериализованный объект
+            //using (FileStream fs = new FileStream("garagesTransportXML.xml", FileMode.OpenOrCreate))
+            //{
+            //    formatter.Serialize(fs, garagesTransport);
+               
+            //}
+
+        }
         public int GetIndex<T>(T myTransport)
         {
             if (myTransport == null)
@@ -135,7 +209,7 @@
             }
             Console.WriteLine(new string('=', 140));
         }
-        
+
 
         public override string ToString()
         {
