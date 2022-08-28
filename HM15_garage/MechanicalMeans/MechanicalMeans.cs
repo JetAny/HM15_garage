@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace HM15_garage
 {
-    internal abstract class MechanicalMeans : ITransport
+    [Serializable]
+    public abstract class MechanicalMeans : ITransport
     {
         public string fuelType { get ; set; }
         public double fuelQuantity { get ; set ; }
         public string brand { get ; set ; }
         public int maxSpeed { get ; set ; }
         public int namber { get ; set ; }
+        public MechanicalMeans()
+        {
+
+        }
         public  MechanicalMeans(string fuelType, double fuelQuantity, string brand, int maxSpeed)
         {
             this.fuelType = fuelType;
