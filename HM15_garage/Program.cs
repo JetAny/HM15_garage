@@ -3,6 +3,8 @@ using HM15_garage;
 using System.Runtime.Serialization.Formatters.Binary;
 
 Garage garage1 = new Garage();
+Garage garage2 = new Garage();
+Garage garage3 = new Garage();
 ITransport car1 = new Car("Бензин", 55, "Шкода", 180, 4);
 ITransport car2 = new Car("Дизель", 65, "БМВ", 230, 6);
 garage1.AddMechanicalMeans(car1);
@@ -21,8 +23,16 @@ Task task = garage1.TransportSerializJSON();
 var z = garage1.GetIndex(bus2);
 var bus3 = (ITransport)bus2.Clone();
 
+garage2.AddMechanicalMeans(bus1);
+garage2.AddMechanicalMeans(bus2);
+
+garage3.AddMechanicalMeans(truck1);
+garage3.AddMechanicalMeans(truck2);
+
 //garage1.AddMechanicalMeans(bus3);
 garage1.PrintGarage();
+garage2.PrintGarage();
+garage3.PrintGarage();
 
 garage1.SendTransOnFlight(20);
 garage1.SendTransOnFlight(10);
